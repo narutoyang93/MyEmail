@@ -1,0 +1,93 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--字体大小-->
+    <dimen name="text_size_smaller">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_normal_than">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_biglarge">20sp</dimen>
+    <dimen name="text_size_biglarger1">22sp</dimen>
+    <dimen name="text_size_biglarger2">24sp</dimen>
+
+    <dimen name="padding_small0">2dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="padding_small1">6dp</dimen>
+    <dimen name="padding_normal">10dp</dimen>
+    <dimen name="padding_large">15dp</dimen>
+    <dimen name="padding_larger">20dp</dimen>
+
+    <dimen name="margin_line">1dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_normal">12dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_larger">20dp</dimen>
+    <dimen name="margin_larger0">25dp</dimen>
+    <dimen name="margin_larger1">30dp</dimen>
+    <dimen name="margin_max">40dp</dimen>
+    <dimen name="margin_max1">50dp</dimen>
+
+    <!--title高度-->
+    <dimen name="title_height">50dp</dimen>
+    <dimen name="line_width">0.8dp</dimen>
+
+    <!--首页底部标签-->
+    <dimen name="bottom_tab_height">50dip</dimen>
+    <dimen name="bottom_tab_font_size">12.0dip</dimen>
+
+    <!--login-->
+    <dimen name="switch_psd_height">15dp</dimen>
+    <dimen name="switch_psd_width">25dp</dimen>
+
+    <!--login-->
+    <dimen name="delete_psd_height">15dp</dimen>
+    <dimen name="delete_psd_width">15dp</dimen>
+
+
+    <dimen name="fragment_mail_drawer_item_height">50dp</dimen>
+    <dimen name="contact_item_height">50dp</dimen>
+
+    <dimen name="item_height">54dp</dimen>
+
+    <!--标题与输入内容的间距-->
+    <dimen name="title_edittext_space">60dp</dimen>
+
+    <!--个人详细信息页面底部Button的宽高-->
+    <dimen name="person_detail_Bottom_button_w">60dp</dimen>
+    <dimen name="person_detail_Bottom_button_h">60dp</dimen>
+
+    <!--邮件列表标题栏按钮尺寸-->
+    <dimen name="email_title_button_w">40dp</dimen>
+    <dimen name="email_title_button_h">40dp</dimen>
+
+    <!--联系人列表搜索条-->
+    <dimen name="search_bar_w">340dp</dimen>
+    <dimen name="search_bar_h">26dp</dimen>
+    <!--联系人列表索引栏-->
+    <dimen name="index_bar_w">30dp</dimen>
+    <!-- 标题栏发回按钮-->
+    <!-- 聊天头像-->
+
+    <!-- 聊天列表条目宽带-->
+    <dimen name="chat_item_max_w">250dp</dimen>
+
+    <!-- 聊天录音popupWindow尺寸-->
+    <dimen name="chat_record_pop_w">180dp</dimen>
+    <dimen name="chat_record_pop_h">180dp</dimen>
+
+    <dimen name="chat_item_voice_margin">4dp</dimen>
+
+    <!-- 聊天图片尺寸-->
+    <dimen name="chat_item_image_max_w">120dp</dimen>
+    <dimen name="chat_item_image_max_h">120dp</dimen>
+
+    <dimen name="chat_item_image_min_w">120dp</dimen>
+    <dimen name="chat_item_image_min_h">120dp</dimen>
+
+    <!--聊天界面按钮尺寸-->
+    <dimen name="chat_button_size">30dp</dimen>
+</resources>

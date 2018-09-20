@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--通用属性-->
+    <attr name="drawableWidth" format="dimension" />
+    <attr name="drawableHeight" format="dimension" />
+
+    <declare-styleable name="MyTextView">
+        <attr name="drawableWidth" />
+        <attr name="drawableHeight" />
+    </declare-styleable>
+
+</resources>
