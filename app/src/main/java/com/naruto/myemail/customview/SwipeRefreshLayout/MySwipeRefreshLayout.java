@@ -79,7 +79,7 @@ public class MySwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
     @VisibleForTesting
     static final int CIRCLE_DIAMETER_LARGE = 56;
 
-    private static final String LOG_TAG = SwipeRefreshLayout.class.getSimpleName();
+    private static final String TAG = "MySwipeRefreshLayout";
 
     private static final int MAX_ALPHA = 255;
     private static final int STARTING_PROGRESS_ALPHA = (int) (.3f * MAX_ALPHA);
@@ -705,7 +705,7 @@ public class MySwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
 
             case MotionEvent.ACTION_MOVE:
                 if (mActivePointerId == INVALID_POINTER) {
-                    Log.e(LOG_TAG, "Got ACTION_MOVE event but don't have an active pointer id.");
+                    Log.e(TAG, "Got ACTION_MOVE event but don't have an active pointer id.");
                     return false;
                 }
 
@@ -1004,7 +1004,7 @@ public class MySwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
             case MotionEvent.ACTION_MOVE: {
                 pointerIndex = ev.findPointerIndex(mActivePointerId);
                 if (pointerIndex < 0) {
-                    Log.e(LOG_TAG, "Got ACTION_MOVE event but have an invalid active pointer id.");
+                    Log.e(TAG, "Got ACTION_MOVE event but have an invalid active pointer id.");
                     return false;
                 }
 
@@ -1014,7 +1014,6 @@ public class MySwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
                 if (mIsBeingDragged) {
                     final float overscrollTop = (y - mInitialMotionY) * DRAG_RATE;
                     if (overscrollTop > 0) {
-                        mTarget.setTranslationY(overscrollTop);
                         moveSpinner(overscrollTop);
                     } else {
                         return false;
@@ -1025,7 +1024,7 @@ public class MySwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
             case MotionEvent.ACTION_POINTER_DOWN: {
                 pointerIndex = ev.getActionIndex();
                 if (pointerIndex < 0) {
-                    Log.e(LOG_TAG,
+                    Log.e(TAG,
                             "Got ACTION_POINTER_DOWN event but have an invalid action index.");
                     return false;
                 }
@@ -1038,11 +1037,9 @@ public class MySwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
                 break;
 
             case MotionEvent.ACTION_UP: {
-                //                    手指松开时启动动画回到头部
-                mTarget.animate().translationY(0).setDuration(200).start();
                 pointerIndex = ev.findPointerIndex(mActivePointerId);
                 if (pointerIndex < 0) {
-                    Log.e(LOG_TAG, "Got ACTION_UP event but don't have an active pointer id.");
+                    Log.e(TAG, "Got ACTION_UP event but don't have an active pointer id.");
                     return false;
                 }
 
@@ -1152,9 +1149,14 @@ public class MySwipeRefreshLayout extends ViewGroup implements NestedScrollingPa
     }
 
     void setTargetOffsetTopAndBottom(int offset) {
-        mCircleView.bringToFront();
+        Log.d(TAG, "setTargetOffsetTopAndBottom: offset=" + offset);
+        //mCircleView.bringToFront();
         ViewCompat.offsetTopAndBottom(mCircleView, offset);
         mCurrentTargetOffsetTop = mCircleView.getTop();
+        if (mTarget != null) {//移动子view，确保mCircleView在子view上方空白区域垂直居中
+            int childOffsetTop = mCurrentTargetOffsetTop + mCircleView.getBottom();
+            ViewCompat.offsetTopAndBottom(mTarget, childOffsetTop - mTarget.getTop());
+        }
     }
 
     private void onSecondaryPointerUp(MotionEvent ev) {
