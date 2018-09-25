@@ -1,19 +1,4 @@
 package com.naruto.myemail.customview.SwipeRefreshLayout;
-/*
- * Copyright (C) 2014 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -23,18 +8,18 @@ import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
 
 /**
- * Private class created to work around issues with AnimationListeners being
- * called before the animation is actually complete and support shadows on older
- * platforms.
+ * @Purpose
+ * @Author Naruto Yang
+ * @CreateDate 2018/9/25 0025
+ * @Note
  */
-class CircleImageView extends android.support.v7.widget.AppCompatImageView {
-
+public class MyImageView extends android.support.v7.widget.AppCompatImageView {
     private static final int KEY_SHADOW_COLOR = 0x1E000000;
     private static final int FILL_SHADOW_COLOR = 0x3D000000;
     // PX
@@ -46,7 +31,19 @@ class CircleImageView extends android.support.v7.widget.AppCompatImageView {
     private Animation.AnimationListener mListener;
     int mShadowRadius;
 
-    CircleImageView(Context context, int color) {
+    public MyImageView(Context context) {
+        super(context);
+    }
+
+    public MyImageView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public MyImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public MyImageView(Context context, int color) {
         super(context);
         final float density = getContext().getResources().getDisplayMetrics().density;
         final int shadowYOffset = (int) (density * Y_OFFSET);
@@ -76,18 +73,10 @@ class CircleImageView extends android.support.v7.widget.AppCompatImageView {
         return android.os.Build.VERSION.SDK_INT >= 21;
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (!elevationSupported()) {
-            setMeasuredDimension(getMeasuredWidth() + mShadowRadius * 2, getMeasuredHeight()
-                    + mShadowRadius * 2);
-        }
-    }
-
     public void setAnimationListener(Animation.AnimationListener listener) {
         mListener = listener;
     }
+
 
     @Override
     public void onAnimationStart() {
@@ -106,21 +95,11 @@ class CircleImageView extends android.support.v7.widget.AppCompatImageView {
     }
 
     /**
-     * Update the background color of the circle image view.
-     *
-     * @param colorRes Id of a color resource.
+     * @Purpose
+     * @Author Naruto Yang
+     * @CreateDate 2018/9/25 0025
+     * @Note
      */
-    public void setBackgroundColorRes(int colorRes) {
-        setBackgroundColor(ContextCompat.getColor(getContext(), colorRes));
-    }
-
-    @Override
-    public void setBackgroundColor(int color) {
-        if (getBackground() instanceof ShapeDrawable) {
-            ((ShapeDrawable) getBackground()).getPaint().setColor(color);
-        }
-    }
-
     private class OvalShadow extends OvalShape {
         private RadialGradient mRadialGradient;
         private Paint mShadowPaint;
@@ -140,8 +119,8 @@ class CircleImageView extends android.support.v7.widget.AppCompatImageView {
 
         @Override
         public void draw(Canvas canvas, Paint paint) {
-            final int viewWidth = CircleImageView.this.getWidth();
-            final int viewHeight = CircleImageView.this.getHeight();
+            final int viewWidth = MyImageView.this.getWidth();
+            final int viewHeight = MyImageView.this.getHeight();
             canvas.drawCircle(viewWidth / 2, viewHeight / 2, viewWidth / 2, mShadowPaint);
             canvas.drawCircle(viewWidth / 2, viewHeight / 2, viewWidth / 2 - mShadowRadius, paint);
         }
@@ -153,4 +132,5 @@ class CircleImageView extends android.support.v7.widget.AppCompatImageView {
             mShadowPaint.setShader(mRadialGradient);
         }
     }
+
 }
